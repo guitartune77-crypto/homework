@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .head{
+        text-align:center;
+    }
+    .no_margin{
+        margin:0px;
+    }
+    .Billing_address{
+        display:block;
+        width:50%;
+    }
+    .Your_Cart{
+        margin:50px;
+        width:230px;
+    }
+    .charts ul li{
+        border: 1px solid;
+    }
+    .charts ul{
+        list-style:none;
+    }
+    .continue{
+        background-color:blue;
+        color:white;
+        text-align:center;
+        padding:30px;
+        font-size:200%
+    }
+</style>
+<body>
+    <div class="head">  
+        <h1>Checkout form</h1>
+        <p class="no_margin">Below is an example form built entirely with Bootstrap’s form controls. Each required form grouphas a</p>
+        <p class="no_margin">validation state that can be triggered by attempting to submit the form without completing it.</p>
+    </div>
+    <div style="float:right; width:30%" class="Your_Cart">
+        <p style="color:blue; font-size: 20px;">Your cart</p>
+        <div class="charts">
+            <ul>
+                <p style="float:right; margin:0px;color:grey;">$12&nbsp;&nbsp;</p>
+            <li style="margin:0px;">&nbsp;&nbsp;&nbsp;Product name<br/><p style="margin:0px; color:grey;">&nbsp;&nbsp;&nbsp;Brief discription</p></li>
+            <p style="float:right; margin:0px; color:grey;">$8&nbsp;&nbsp;&nbsp;</p>
+            <li>&nbsp;&nbsp;&nbsp;Second product<p style="margin:0px; color:grey;">&nbsp;&nbsp;&nbsp;Brief description</p></li>
+            <p style="float:right; margin:0px; color:grey;">$5&nbsp;&nbsp;&nbsp;</p>
+            <li>&nbsp;&nbsp;&nbsp;Third item<p style="margin:0px; color:grey;">&nbsp;&nbsp;&nbsp;Brief description</p></li>
+            <p style="float:right; margin:0px; color:green;">$-5&nbsp;&nbsp;&nbsp;</p>
+            <li style="color:green">&nbsp;&nbsp;&nbsp;Promo code<p style="margin:0px; color:green;">&nbsp;&nbsp;&nbsp;EXAMPLECODE</p></li>
+            <p style="float:right; margin:0px; padding:10px;">$20&nbsp;&nbsp;&nbsp;</p>
+            <li style="padding:10px;">&nbsp;&nbsp;&nbsp;Total (USD)</li>
+            </ul>
+            <fieldset style="width:480px;"> 
+                <legend></legend>
+                <label for="input_promocode"></label>
+                <input type="text" id="input_promocode" placeholder="Promo code">
+                <a href="nostyle.htm" style="background-color:grey; border:1px solid;margin:10px;padding:10px; color:white;">redeem</a>
+            </fieldset>
+        </div>
+    
+    </div>
+    
+    <div class="Billing_address" style="float:right;">
+        <p style="font-size:25px;">Billng address</p>
+        <form action="form.htm" method="GET">
+        <label for="your_name">First name</label> <label for="your last_name">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Last name</label><br/>
+        <input type="text" id="your_name">
+        <input type="text" id="your last_name"><br/>
+        <label for="User_name">Username</label><br/>
+        <label for="@" style="background-color: rgb(226, 226, 226); border:1px solid;">@</label>
+        <input type="text" id="User_name" placeholder="Username"><br/>
+        <label for="your_email">Email</label>
+        <label for="itsoptional" style="color:rgb(184, 184, 184)">(optional)</label><br/>
+        <input type="text" id="your_email" placeholder="you@example.com"><br/>
+        <label for="your_address">Address</label><br/>
+        <input type="text" id="your_address" placeholder="1234 Main St"><br/>
+        <label for="your_Address2">Address 2</label><label for="itsoptional" style="color:rgb(184, 184, 184)">(optional)</label><br/>
+        <input type="text" id="your_Address2" placeholder="Apartment or suite"><br/>
+        <label for="country_list">Country</label><label for="state_list">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;State</label><label for="your_zip">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Zip</label><br/>
+        <input type="text" id="country_list" list="Country_list" placeholder="Choose..."><input type="text"id="state_list" list="State_list" placeholder="Choose..."><input type="text" id="your_zip">
+        <label for="select homework"></label>
+        <select type="select" id="select homework">
+            <option></option>
+        </select>
+        <label for="date homework"></label>
+        <input type="date" id="date homework">
+        <label for="textarea homework"></label>
+        <textarea id="textarea homework" rows="1" cols="1"></textarea>
+        <datalist id="Country_list">
+            <option value="Choose..."></option>
+            <option value="United States"></option>
+        </datalist>
+        <datalist id="State_list">
+            <option value="Choose..."></option>
+            <option value="California"></option>
+        </datalist>
+        <br/>
+        <hr class="my-4">
+        <input type="checkbox" id="input_checkbox">
+        <label for="input_checkbox">Shipping address is the same as my billing address</label><br/>
+        <input type="checkbox" id="input_checkbox2">
+        <label for="input_checkbox">Save this information for next time</label>
+        <hr>
+        <label for="input_radio" style="font-size:20px;">Payment</label><br/>
+        <input type="radio" id="input_radio1" name="same_radio">
+        <label for="input_radio1">Credit card</label><br/>
+        <input type="radio" id="input_radio2" name="same_radio">
+        <label for="input_radio">Debit card</label><br/>
+        <input type="radio" id="input_radio3" name="same_radio">
+        <label for="input_radio3">PayPal</label><br/>
+        <label for="input_namecard">Name on card</label>
+        <label for="input_cardnumber">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Credit card number</label><br/>
+        <input type="text" id="input_namecard">
+        <input type="number" id="input_cardnumber">
+        <p style="color:grey; margin:0px;">Full name as displayed on card</p>
+        <label for="input_expiration">Expiration</label>
+        <label for="input_cvv">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CVV</label><br/>
+        <input type="text" id="input_expiration">
+        <input type="text" id="input_cvv">
+        <hr>
+        <button class="continue" onclick="">continue to checkout</button>
+    </form>
+    </div>
+</body>
+</html>
