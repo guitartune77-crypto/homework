@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>도서 수정</title>
+</head>
+<body>
+  <h1>도서 수정</h1>
+
+  <form onsubmit="return handleSubmit()">
+    <label for="book_name">도서명 (필수):</label><br>
+    <input id="book_name" type="text"><br>
+
+    <label for="author">저자 (필수):</label><br>
+    <input id="author" type="text"><br>
+
+    <label for="publisher">출판사:</label><br>
+    <input id="publisher" type="text"><br>
+
+    <label for="publish_date">출판년도 (필수):</label><br>
+    <input id="publish_date" type="text"><br>
+
+    <label for="book_page">책 길이:</label><br>
+    <input id="book_page" type="number"><br>
+
+    <label for="ISBN">ISBN (필수):</label><br>
+    <input id="ISBN" type="text" readonly><br><br>
+
+    <button type="submit">확인</button>
+    <button type="button" onclick="cancelEdit()">취소</button>
+  </form>
+
+  <script>
+    const books = [
+      {name: '해리포터와 마법사의 돌', author: 'J.K. 롤링', publisher: '문학수첩', year: '1997', page: 232, isbn: '9788983920775'},
+      {name: '나미야 잡화점의 기적', author: '히가시노 게이고', publisher: '현대문학', year: '2012', page: 237, isbn: '9788972756194'},
+      {name: '어린 왕자', author: '생텍쥐페리', publisher: '열린책들', year: '1943', page: 320, isbn: '9788932903965'},
+      {name: '데미안', author: '헤르만 헤세', publisher: '민음사', year: '1919', page: 125, isbn: '9788937460449'},
+      {name: '총, 균, 쇠', author: '재레드 다이아몬드', publisher: '문학사상', year: '1997', page: 30, isbn: '9788970123456'}
+    ];
+
+    function getISBNFromURL() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get('isbn');
+    }
+
+    function loadBookData() {
+      const isbn = getISBNFromURL();
+      const book = books.find(b => b.isbn === isbn);
+      if (!book) {
+        alert('해당 도서를 찾을 수 없습니다.');
+        location.href = 'index.html';
+        return;
+      }
+
+      document.getElementById('book_name').value = book.name;
+      document.getElementById('author').value = book.author;
+      document.getElementById('publisher').value = book.publisher;
+      document.getElementById('publish_date').value = book.year;
+      document.getElementById('book_page').value = book.page;
+      document.getElementById('ISBN').value = book.isbn;
+    }
+
+    function handleSubmit() {
+      const name = document.getElementById('book_name').value.trim();
+      const author = document.getElementById('author').value.trim();
+      const year = document.getElementById('publish_date').value.trim();
+      const isbn = document.getElementById('ISBN').value.trim();
+
+      if (name === '') {
+        alert('도서명을 입력하세요.');
+        return false;
+      }
+      if (author === '') {
+        alert('저자를 입력하세요.');
+        return false;
+      }
+      if (year === '') {
+        alert('출판년도를 입력하세요.');
+        return false;
+      }
+      if (isbn === '') {
+        alert('ISBN을 입력하세요.');
+        return false;
+      }
+
+      if (confirm('게시물을 수정할까요?')) {
+        alert('게시물이 수정되었습니다.');
+        // 실제 수정 처리 로직은 서버 연동 시 구현
+      }
+
+      return false; // 실제 저장은 하지 않으므로 폼 제출 막음
+    }
+
+    function cancelEdit() {
+      location.href = 'index.html';
+    }
+
+    window.onload = loadBookData;
+  </script>
+</body>
+</html>

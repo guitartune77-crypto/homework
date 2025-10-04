@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>도서 상세보기</title>
+</head>
+<body>
+  <h1>도서 상세 정보</h1>
+  <div id="book_detail"></div>
+
+  <button>추가</button>
+  <button id="editBtn">수정</button>
+  <button id="deleteBtn">삭제</button>
+  <button onclick="location.href='index.html'">목록</button>
+
+  <script>
+    const books = [
+      {name: '해리포터와 마법사의 돌', author: 'J.K. 롤링', publisher: '문학수첩', year: '1997', page: 232, isbn: '9788983920775'},
+      {name: '나미야 잡화점의 기적', author: '히가시노 게이고', publisher: '현대문학', year: '2012', page: 237, isbn: '9788972756194'},
+      {name: '어린 왕자', author: '생텍쥐페리', publisher: '열린책들', year: '1943', page: 320, isbn: '9788932903965'},
+      {name: '데미안', author: '헤르만 헤세', publisher: '민음사', year: '1919', page: 125, isbn: '9788937460449'},
+      {name: '총, 균, 쇠', author: '재레드 다이아몬드', publisher: '문학사상', year: '1997', page: 30, isbn: '9788970123456'},
+      {name: '지적 대화를 위한 넓고 얕은 지식', author: '채사장', publisher: '웨일북', year: '2014', page: 87, isbn: '9788997199021'},
+      {name: '미드나잇 라이브러리', author: '매트 헤이그', publisher: '인플루엔셜', year: '2020', page: 158, isbn: '9788968332978'},
+      {name: '1984', author: '조지 오웰', publisher: '민음사', year: '1949', page: 155, isbn: '9788937460449'},
+      {name: '죽음에 관하여', author: '어니스트 베커', publisher: '홍익출판사', year: '1973', page: 200, isbn: '9788970654321'},
+      {name: '이기적 유전자', author: '리처드 도킨스', publisher: '을유문화사', year: '1976', page: 179, isbn: '9788937482342'}
+    ];
+
+    function getISBNFromURL() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get('isbn');
+    }
+
+    function displayBookDetail(book) {
+      const container = document.getElementById('book_detail');
+      container.innerHTML = `
+        <p><strong>도서명:</strong> ${book.name}</p>
+        <p><strong>저자:</strong> ${book.author}</p>
+        <p><strong>출판사:</strong> ${book.publisher}</p>
+        <p><strong>출판년도:</strong> ${book.year}</p>
+        <p><strong>책 길이:</strong> ${book.page} 페이지</p>
+        <p><strong>ISBN:</strong> ${book.isbn}</p>
+      `;
+    }
+
+    function last() {
+      const isbn = getISBNFromURL();
+
+      const book = books.find(b => b.isbn === isbn);
+      
+
+      displayBookDetail(book);
+
+      document.getElementById('editBtn').addEventListener('click', () => {
+        location.href = `edit.html?isbn=${isbn}`;
+      });
+
+      document.getElementById('deleteBtn').addEventListener('click', () => {
+        if (confirm('게시물을 삭제할까요?')) {
+          alert('게시물이 삭제되었습니다.');
+        }
+      });
+    }
+
+    window.onload = last;
+  </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>도서 추가</h1>
+  <form onsubmit="return validateForm()">
+    <label for="book_name">도서명(필수):</label><br/>
+    <input id="book_name" type="text"><br/>
+
+    <label for="author">저자(필수):</label><br/>
+    <input id="author" type="text"><br/>
+    <label for="publisher">출판사:</label><br/>
+    <input id="publisher" type="text"><br/>
+    <label for="publish_date">출판년도(필수):</label><br/>
+    <input id="publish_date" type="text" maxlength="4" /><br/>
+    <label for="book_page">책 길이</label><br/>
+    <input id="book_page" type="number"><br/>
+    <label for="ISBN">ISBN(필수):</label><br/>
+    <input id="ISBN" type="text"><br/><br/>
+    <button type="submit">확인</button>
+    <button type="button" onclick="cancelForm()">취소</button>
+  </form>
+  <script>
+    function validateForm(){
+        const name= document.getElementById('book_name').value.trim();
+        const author=document.getElementById('author').value.trim();
+        const publisher =document.getElementById('publisher').value.trim();
+        const year= document.getElementById('publish_date').value.trim();
+        const page= document.getElementById('book_page').value.trim();
+        const isbn= document.getElementById('ISBN').value.trim();
+
+        if(name===''){
+            alert('도서명을 입력하세요');
+            return false;
+        }
+        if(author===''){
+            alert('저자를 입력하세요');
+            return false;
+        }
+        if(year===''){
+            alert('출판년도를 입력하세요');
+            return false;
+        }
+        if(isbn===''){
+            alert('ISBN을 입력하세요');
+            return false;
+        }
+        alert('게시물이 추가됩니다');
+        return true;
+    }
+    function cancelForm(){
+        location.href='index.html'
+    }
+  </script>
+</body>
+</html>
